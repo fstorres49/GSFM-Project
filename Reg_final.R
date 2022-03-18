@@ -1,0 +1,9 @@
+install.packages("plm")
+library("plm")
+new_file2 <-read.csv("C:\\Users\\Lakshi\\Desktop\\gkt1.csv")
+head(new_file2)
+set.seed(512)
+model1 <- plm(invest_y1 ~ Q +blockchain:Q +blockchain ,data = new_file2, 
+                          index =c("conm","fyear"),
+                          model = "within",effect = "twoways")
+summary(model1)
